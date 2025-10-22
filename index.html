@@ -269,6 +269,29 @@
             </div>
         </section>
 
+        <!-- Entendendo o Código -->
+        <section id="entendendo-o-codigo" class="py-20 md:py-28">
+            <div class="container mx-auto px-6 lg:px-8 max-w-4xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl lg:text-5xl font-extrabold text-slate-800 section-title inline-block reveal">Entendendo o Código: A Tag &lt;section&gt;</h2>
+                </div>
+                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl border reveal">
+                    <div class="grid md:grid-cols-3 gap-8 text-lg">
+                        <div class="md:col-span-1">
+                            <h3 class="text-2xl font-bold text-blue-700 mb-4">O que ela faz?</h3>
+                            <p>A tag <code>&lt;section&gt;</code> é usada para agrupar conteúdos que possuem um tema ou relação em comum. Em nosso site, cada grande bloco de informação — "O Problema", "A Solução", "Equipe" — é envolvido por uma tag <code>&lt;section&gt;</code>.</p>
+                        </div>
+                        <div class="md:col-span-2">
+                             <h3 class="text-2xl font-bold text-blue-700 mb-4">Por que a escolhemos?</h3>
+                            <p class="mb-4">Poderíamos ter usado uma <code>&lt;div&gt;</code>, que é uma tag genérica para agrupar elementos. No entanto, usar <code>&lt;section&gt;</code> é uma escolha mais "simples". Isso significa que ela dá mais significado e contexto ao conteúdo.</p>
+                            <p>Essa prática ajuda os mecanismos de busca (como o Google) a entenderem melhor a estrutura do nosso site e também melhora a acessibilidade para pessoas que usam leitores de tela.</p>
+                            <p class="mt-4">Além disso, atribuímos um <code>id</code> único a cada seção (ex: <code>id="problema"</code>). Isso permite que os links no menu de navegação (<code>&lt;a href="#problema"&gt;</code>) direcionem o usuário exatamente para a parte correta da página, criando o efeito de rolagem suave que você experimenta ao clicar neles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- 6. EQUIPE -->
         <section id="equipe" class="py-20 md:py-28">
             <div class="container mx-auto px-6 lg:px-8 max-w-6xl">
@@ -278,21 +301,21 @@
                 <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
                     <!-- Membro da Equipe: Fernanda -->
                     <div class="text-center reveal">
-                        <img class="w-40 h-40 rounded-full mx-auto mb-4 object-cover" src="img/foto.png" alt="Foto de Fernanda">
+                        <img class="w-40 h-40 rounded-full mx-auto mb-4 object-cover" src="https://placehold.co/160x160/EFEFEF/333333?text=Foto" alt="Foto de Fernanda">
                         <h3 class="text-2xl font-bold text-slate-800">Fernanda</h3>
                         <p class="text-blue-600 font-semibold mb-2">Especialista em UX/UI Design</p>
                         <p class="text-slate-600">Focada em criar uma plataforma intuitiva, acessível e agradável para todos os usuários.</p>
                     </div>
                     <!-- Membro da Equipe: Lucas Henrique -->
                     <div class="text-center reveal" style="transition-delay: 150ms;">
-                        <img class="w-40 h-40 rounded-full mx-auto mb-4 object-cover" src="img/foto.png" alt="Foto de Lucas Henrique">
+                        <img class="w-40 h-40 rounded-full mx-auto mb-4 object-cover" src="https://placehold.co/160x160/EFEFEF/333333?text=Foto" alt="Foto de Lucas Henrique">
                         <h3 class="text-2xl font-bold text-slate-800">Lucas Henrique</h3>
                         <p class="text-blue-600 font-semibold mb-2">Desenvolvedor</p>
                         <p class="text-slate-600">Responsável por transformar ideias em uma plataforma robusta, segura e escalável.</p>
                     </div>
                     <!-- Membro da Equipe: Luiz Thiago -->
                     <div class="text-center reveal" style="transition-delay: 300ms;">
-                        <img class="w-40 h-40 rounded-full mx-auto mb-4 object-cover" src="img/foto.png" alt="Foto de Luiz Thiago">
+                        <img class="w-40 h-40 rounded-full mx-auto mb-4 object-cover" src="https://placehold.co/160x160/EFEFEF/333333?text=Foto" alt="Foto de Luiz Thiago">
                         <h3 class="text-2xl font-bold text-slate-800">Luiz Thiago</h3>
                         <p class="text-blue-600 font-semibold mb-2">Estrategista de Negócios</p>
                         <p class="text-slate-600">Conectando nossa tecnologia às necessidades das cidades para gerar impacto real.</p>
@@ -315,6 +338,91 @@
     </footer>
 
     <!-- JavaScript para Ícones e Animações -->
-    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+
+        const reveal = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+            const revealPoint = 100; // Adjust this value to change when the animation triggers
+
+            reveals.forEach(element => {
+                const revealTop = element.getBoundingClientRect().top;
+                if (revealTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                } else {
+                    // Optional: remove the class to re-trigger animation on scroll up
+                    // element.classList.remove('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', reveal);
+        // Initial check in case elements are already in view on page load
+        reveal();
+    </script>
+    <style>
+        /* Using a more descriptive name for the font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #475569; /* slate-600 */
+        }
+
+        /* Hero section gradient background */
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+
+        /* Styling for the animated underline on section titles */
+        .section-title {
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #3b82f6; /* blue-600 */
+            border-radius: 2px;
+        }
+        
+        /* Card lift effect on hover */
+        .card-lift {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        /* Scroll-reveal animation styles */
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition-delay: var(--delay, 0s);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Code block styling for the explanation section */
+        code {
+            background-color: #e2e8f0; /* slate-200 */
+            color: #1e293b; /* slate-800 */
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
 </body>
 </html>
